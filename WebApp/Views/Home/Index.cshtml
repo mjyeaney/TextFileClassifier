@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Getting Started";
+}
+
+<div>
+    <h2>Getting Started</h2>
+    <div class="wrapper">
+        <iframe class="fileUploaderFrame" frameborder="0" scrolling="no" src="/Home/FileUploader" ></iframe>
+    </div>
+    <h2>Recently Analyzed</h2>
+    <div class="wrapper">
+        @if (ViewBag.RecentItems.Count > 0)
+        {
+        <ul class="recentItemsList">
+        @foreach (var item in ViewBag.RecentItems)
+        {
+            <li>
+                <h3><a href="/Results/@item.JobId" title="View results">@item.OriginalFileName</a></h3>
+            @if (item.IsComplete)
+            {
+                @if (item.Categories != null)
+                {
+                    <p>@string.Join(", ", @item.Categories)</p>
+                }
+                else
+                {
+                    <p>(No categories found)</p>
+                }
+                <p>Job duration: @((item.JobEndTime - item.JobStartTime).TotalSeconds) sec.</p>
+            
+            }
+            else
+            {
+                <p>Job in progress...</p>
+            }
+            </li>
+        }
+        </ul>
+        }
+        else
+        {
+            <p><em>No recent items found.</em></p>
+        }
+    </div>
+</div>

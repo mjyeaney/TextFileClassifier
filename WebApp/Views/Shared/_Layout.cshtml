@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Text Analyzer</title>
+    <link rel="stylesheet" href="~/css/site.css?ver=1.09" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Text Analyzer</h1>
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+                <li><a href="/Config" title="Show Configuration">Config</a></li>
+            </ul>
+        </header>
+        
+        <div class="content">
+            @RenderBody()
+        </div>
+
+        <footer>
+            <p>&copy;2018 - Microsoft Corporation</p>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js?ver=1.09" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

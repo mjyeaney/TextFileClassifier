@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Configuration Settings";
+}
+
+<div>
+    <h2>Configuration Settings</h2>
+    <div class="wrapper">
+        <ul class="noBulletList">
+        @foreach (var kvp in ViewBag.ConfigSettings)
+        {
+            <li class="wrappable"><strong>@kvp.Key</strong> = @kvp.Value</li>
+        }
+        </ul>
+    </div>
+</div>

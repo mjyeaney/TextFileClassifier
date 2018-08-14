@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Clean WebApp",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "clean",
+                "${workspaceFolder}/WebApp"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Clean FileIndexer",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "clean",
+                "${workspaceFolder}/FileIndexer"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build WebApp",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/WebApp/WebApp.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build FileIndexer",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/FileIndexer/FileIndexer.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Build UnitTests",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/Tests/Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "Run FileIndexer",
+            "type": "shell",
+            "dependsOn": "Build FileIndexer",
+            "options": {
+                "cwd": "${workspaceFolder}/FileIndexer/bin/Debug/netstandard2.0"
+            },
+            "command": "func host start",
+            "problemMatcher": []
+        }
+    ]
+}

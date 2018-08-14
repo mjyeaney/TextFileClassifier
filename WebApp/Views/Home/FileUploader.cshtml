@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Data File Upload - Text Analyzer Demo</title>
+    <link rel="stylesheet" href="~/css/site.css?ver=1.09" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body class="nested">
+    <div>
+        @if (ViewBag.UiState == "Ready")
+        {
+            <form method="post" enctype="multipart/form-data" action="/Home/FileUploader">
+                <p id="uploadInstructions">Please upload a sample text file for analysis:</p>
+                <button id="fileUploaderButton">Select File...</button>
+                <input type="file" name="policyFile" id="fileUploaderControl" />                
+                <span id="fileUploaderNameLabel">(No file currently selected)</span>
+            </form>
+            <p id="beginProcessLink" class="noDisplay"><a href="#" title="Begin Analysis">Click to begin analysis</a></p>
+
+            <script type="text/javascript">
+                $(function () {
+                    var hasFile = false;
+                    $("#beginProcessLink").click(function(){
+                        if (hasFile){
+                            $("#uploadInstructions").hide();
+                            $("#fileUploaderControl").hide();   
+                            $("#fileUploaderButton").hide();
+                            $("#fileUploaderNameLabel").hide();
+                            $("#beginProcessLink").html("Beginning file upload; please wait..").addClass("progress");
+                            document.forms[0].submit();
+                        }
+                    });
+                    $("#fileUploaderControl").on("change", function (e){
+                        if (e.target.files.length > 0){
+                            var fileName = e.target.files[0].name;
+                            hasFile = true;
+                            $("#fileUploaderNameLabel").text(fileName);
+                            $("#beginProcessLink").addClass("visible");
+                        } else {
+                            hasFile = false;
+                            $("#fileUploaderNameLabel").text('(No file currently selected)');
+                            $("#beginProcessLink").removeClass("visible");
+                        }
+                    });
+                });
+            </script>
+        }
+        else
+        {
+            <p id="jobStatus" class="progress">Saving file...</p>
+            <script type="text/javascript">
+                $(function () {
+                    // every 1 sec, poll for updated status
+                    var scheduleStatusCheck = function(){
+                        setTimeout(function () {
+                            $.getJSON("/Home/CheckFileStatus?jobId=@ViewBag.JobIdentifier", function (data) {
+                                if (!data.isComplete) {
+                                    $("#jobStatus").html(`${data.message}...`);
+                                    scheduleStatusCheck();
+                                } else {
+                                    top.location.href = "/Results/@ViewBag.JobIdentifier";
+                                }
+                            });
+                        }, 1500);
+                    };
+                    scheduleStatusCheck();
+                });
+            </script>
+        }
+    </div>
+</body>
+</html>

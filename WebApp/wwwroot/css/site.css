@@ -1,0 +1,183 @@
+﻿/* Basics */
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #111;
+    font-size: 13px;
+    background-color: #f0f0f0;
+    overflow-y: scroll;
+}
+
+body.nested {
+    background-color: #fff;
+}
+
+input, select, textarea, button { 
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #111;
+    font-size: 13px;
+    padding: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 400; }
+a, a:visited, a:active, a:hover { color: #006;}
+a:hover { text-decoration: underline; }
+table, p { margin-bottom: 1em; }
+li { padding: .25em; }
+.noBulletList { list-style-type: none; }
+.noDisplay { display: none; }
+.wrappable { word-wrap: break-word; }
+
+/* Page sections */
+
+.container {
+    margin: 0 auto;
+    max-width: 1150px;
+    border: 1px solid #cacaca;
+    background-color: #fff;
+    padding-bottom: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+header {
+    margin-bottom: 1em;
+    padding: 1em 1em .25em 1em;
+}
+
+header h1 { 
+    line-height: 2em;
+}
+
+header ul {
+    list-style-type: none;
+    float: right;
+    margin-top: -2.75em;
+}
+
+header ul li {
+    display: inline-block;
+    margin-left: 1em;
+}
+
+header ul li a {
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.content { margin: 0 1em; }
+
+.content .wrapper { margin: 1em; }
+
+.content h2 {
+    margin-bottom: 1em;
+    background-color: #36a;
+    padding: .5em;
+    font-weight: normal;
+    color: #fff;
+    font-size: 1.25em;
+    box-shadow: 0 5px 1em #aaa;
+}
+
+footer {
+    clear: both;
+    margin: 0 1em;
+    margin-top: 1em;
+    font-size: .875em;
+    text-align: center;
+}
+
+/* Main view , recent items */
+ul.recentItemsList { 
+    list-style-type: none;
+    margin-right: -1em;
+}
+
+ul.recentItemsList li {
+    float: left;
+    border: 1px solid #c0c0c0;
+    padding: 1em;
+    margin: 0 1em 1em 0;
+    height: 12em;
+    width: 10em;
+    box-shadow: 0 5px 1em #c0c0c0;
+    overflow: hidden;
+}
+
+ul.recentItemsList li h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 1em;
+}
+
+ul.recentItemsList li h3 a {
+    text-decoration: none;
+}
+
+/* File Upload subpage */
+.fileUploaderFrame {
+    width: 100%;
+    height: 9em;
+}
+#fileUploaderControl {
+    display: inline-block;
+    opacity: 0;
+    padding: .5em;
+    width: 5em;
+    margin-left: -6.2em;
+}
+#fileUploaderButton {
+    display: inline-block;
+    padding: .5em;
+    line-height: 1.75em;
+    border: 1px solid #333;
+    border-radius: 2px;
+    background-color: #666;
+    color: #fff;
+    margin-bottom: 1em;
+}
+#fileUploaderNameLabel {
+    padding-left: 1em;
+}
+#beginProcessLink a {
+    background-image: url(/images/arrow.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 2.25em;
+    display: inline-block;
+    line-height: 2em;
+    text-decoration: none;
+}
+#beginProcessLink.visible { 
+    display: inline-block;
+}
+.progress {
+    background-image: url(/images/progress32.svg);
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 3em;
+    display: inline-block;
+    line-height: 2em;
+}
+
+/* Analysis Results Page */
+ul.analysisCategories { 
+    list-style-type: none;
+}
+
+ul.analysisCategories li {
+    border: 1px solid #c0c0c0;
+    padding: 1em;
+    margin: 1em;
+}
+
+ul.analysisCategories li h3 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 1em;
+}
